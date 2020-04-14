@@ -1,0 +1,141 @@
+<div class="container">
+    <h1>Registrarse</h1>
+    
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser($event)">
+      <p>
+        <label>
+          Nuevo username:
+          <input formControlName="username" type="text" name="username" placeholder="Username" [(ngModel)]="username">
+          <a *ngIf="registerForm.controls['username'].valid">
+            <a class="success"> &#9989;</a>
+          </a>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.username" >
+              <div *ngIf="registerForm.get('username').hasError(validation.type) && (registerForm.get('username').dirty || registerForm.get('username').touched)">
+                <div class="danger">
+                   {{validation.message }}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </label>
+      </p>
+      <p>
+        <label>
+          Indique su mail:
+          <input formControlName="mail" type="text" name="mail" placeholder="Mail" [(ngModel)]="mail">
+          <a *ngIf="registerForm.controls['mail'].valid">
+            <a class="success"> &#9989;</a>
+          </a>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.mail" >
+              <div *ngIf="registerForm.get('mail').hasError(validation.type) && (registerForm.get('mail').dirty || registerForm.get('mail').touched)">
+                <div class="danger">
+                   {{validation.message}}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </label>
+      </p>
+      <p>
+        <label>
+          Nueva contraseña:
+          <input  formControlName="pass" type="password" name="pass" placeholder="password" [(ngModel)]="pass">
+          <a *ngIf="registerForm.controls['pass'].valid">
+            <a class="success2">Contraseña segura</a>
+          </a>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.pass" >
+              <div *ngIf="registerForm.get('pass').hasError(validation.type) && (registerForm.get('pass').dirty || registerForm.get('pass').touched)">
+                <div class="danger">
+                   {{validation.message }}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </label>
+      </p>
+
+      <p>
+        <label>
+          Repite contraseña:
+          <input  formControlName="confirmpass" type="password" name="confirmpass" placeholder="Repeat password" [(ngModel)]="confirmpass">
+          <a *ngIf="registerForm.controls['confirmpass'].valid && !registerForm.hasError('passwordNotMatch')">
+            <a class="success"> &#9989;</a>
+          </a>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.pass" >
+              <div *ngIf="registerForm.get('confirmpass').hasError(validation.type) && (registerForm.get('confirmpass').dirty || registerForm.get('confirmpass').touched)">
+                <div class="danger">
+                   {{validation.message }}
+                </div>
+              </div>
+            </ng-container>
+            <div *ngIf="!registerForm.get('confirmpass').errors && registerForm.hasError('passwordNotMatch') && (registerForm.get('confirmpass').dirty || registerForm.get('confirmpass').touched)">
+              <div class="danger">Las contraseñas no coinciden</div>
+            </div>
+          </div>
+        </label>
+      </p>
+
+      <p>
+        <label>
+          Indique su edad:
+          <input  formControlName="edad" type="text" name="edad" placeholder="edad" [(ngModel)]="edad">
+          <a *ngIf="registerForm.controls['edad'].valid">
+            <a class="success"> &#9989;</a>
+          </a>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.edad" >
+              <div *ngIf="registerForm.get('edad').hasError(validation.type) && (registerForm.get('edad').dirty || registerForm.get('edad').touched)">
+                <div class="danger">
+                   {{validation.message }}
+                </div>
+              </div>
+            </ng-container>
+      
+          </div>
+        </label>
+      </p>
+      <p>
+        <label>
+          Indique su género:
+          <input  formControlName="sexo" type="text" name="sexo" placeholder="m/f" [(ngModel)]="sexo">
+          <a *ngIf="registerForm.controls['sexo'].valid">
+            <a class="success"> &#9989;</a>
+          </a>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.sexo" >
+              <div *ngIf="registerForm.get('sexo').hasError(validation.type) && (registerForm.get('sexo').dirty || registerForm.get('sexo').touched)">
+                <div class="danger">
+                   {{validation.message }}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </label>
+      </p>
+      <p>
+        <label>
+          Indique donde reside:
+          <input  formControlName="ubicacion" type="text" name="ubicacion" placeholder="ubicación" [(ngModel)]="ubicacion">
+          <a *ngIf="registerForm.controls['ubicacion'].valid">
+            <a class="success"> &#9989;</a>
+          </a>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.ubicacion" >
+              <div *ngIf="registerForm.get('ubicacion').hasError(validation.type) && (registerForm.get('ubicacion').dirty || registerForm.get('ubicacion').touched)">
+                <div class="danger">
+                   {{validation.message }}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </label>
+      </p>
+      <div>
+      <button size="large" shape="round" type="submit" [disabled]="registerForm.invalid" expand="block" >Register</button>
+      </div>
+      </form>
+</div>
